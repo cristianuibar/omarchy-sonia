@@ -1,3 +1,3 @@
-"""omarchy-voice — drive Omarchy entirely by voice, with OpenAI as the router."""
+"""omarchy-sonia — a voice-powered personal assistant for Omarchy."""
 
 __version__ = "0.3.0"

@@ -510,7 +510,7 @@ class RealtimeSession:
         # Muted means the microphone is off, and speaking into a room that is
         # not listening is just noise. A notification waits until it is read.
         if not self.active:
-            self.feedback.notify("Oma", headline)
+            self.feedback.notify("Sonia", headline)
             return
         # Never cut across a reply in flight, and never pile announcements on
         # top of each other. Late is fine; talking over yourself is not.
@@ -973,7 +973,7 @@ class RealtimeSession:
         else:
             spoken = "That did not go through."
         self.feedback.state("error", f"{code}: {message[:80]}" if message else code)
-        self.feedback.notify("Oma could not answer", spoken, urgency="normal")
+        self.feedback.notify("Sonia could not answer", spoken, urgency="normal")
         self.feedback.speak(spoken)
 
     def _settle(self) -> None:

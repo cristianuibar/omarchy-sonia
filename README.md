@@ -1,8 +1,14 @@
-# omarchy-voice
+# omarchy-sonia
 
-Operate Omarchy by talking to it. Speech goes to OpenAI Realtime; the only
-thing that runs on this machine is the policy gate and the Omarchy / Hyprland
-tools.
+Sonia is a voice-powered personal assistant for Omarchy. Speech goes to OpenAI
+Realtime; the only thing that runs on this machine is the policy gate and the
+Omarchy / Hyprland tools.
+
+This started as a fork of
+[omarchy-voice](https://github.com/wombatoperator/omarchy-voice). The fork
+label stays; the product does not. We are building our own assistant on that
+base. The daemon and CLI are still named `omarchy-voice` until that rebrand
+lands in code.
 
 ```
 you   "put my email on workspace three, then go there"
@@ -16,8 +22,8 @@ Omarchy already ships **Voxtype** for dictation — speech becomes *text*. This 
 the other half: speech becomes *actions*. Voxtype keeps F9; this is on
 `SUPER + SHIFT + V`.
 
-This is an OpenAI + Omarchy add-on, packaged so you can install it locally,
-drop the bar widget in as an Omarchy shell plugin, or open a PR upstream.
+This is an OpenAI + Omarchy add-on, packaged so you can install it locally or
+drop the bar widget in as an Omarchy shell plugin.
 
 ## Why an LLM instead of a phrase grammar
 
@@ -62,8 +68,8 @@ microphone.
 ## Install
 
 ```bash
-git clone https://github.com/wombatoperator/omarchy-voice
-cd omarchy-voice
+git clone https://github.com/cristianuibar/omarchy-sonia
+cd omarchy-sonia
 ./install.sh
 ```
 
@@ -159,7 +165,7 @@ alongside everything else. Declining costs you nothing but the spelling —
 
 ### Searching
 
-Oma has a search engine, and the results land on your screen rather than in a
+Sonia has a search engine, and the results land on your screen rather than in a
 token stream:
 
 ```
@@ -182,7 +188,7 @@ them on screen.
 `open_page(url)` is the same mechanism for one specific address. Prefer both over
 `omarchy launch browser <url>`, which opens a tab inside a window that already
 exists: nothing new appears in `hyprctl`, so it cannot be waited for, read, or
-verified. Oma is told this, and the tool refuses it with the right call named.
+verified. Sonia is told this, and the tool refuses it with the right call named.
 
 ### Terminals, and being told when something is done
 
@@ -231,7 +237,7 @@ what is next — and the tools are shaped so that loop can actually close:
 | `read_screen(query=…)` | A screenful of OCR is a couple of thousand tokens. Ask for the line you need and pay for the line you need. |
 
 `max_turns` (default 12) is how many tool rounds one spoken instruction gets
-before Oma stops and waits to be asked again.
+before Sonia stops and waits to be asked again.
 
 ### Asking for a task, not an application
 
@@ -270,7 +276,7 @@ mattering. `omarchy-voice log` now records what the server says your ceiling
 actually is on every turn (`limits  tokens: 797790/800000 left`) — worth
 checking, because the two are not always the same. Past that the API starts refusing responses; the daemon waits
 the interval the server names and asks again rather than going quiet, but it
-cannot make the budget bigger. If Oma feels like it is pausing between
+cannot make the budget bigger. If Sonia feels like it is pausing between
 sentences, that is what is happening — check your tier at
 [platform.openai.com/account/rate-limits](https://platform.openai.com/account/rate-limits).
 
@@ -278,7 +284,7 @@ sentences, that is what is happening — check your tier at
 on this machine.
 
 Reach costs tokens. The tools above add about 2,000 to every turn — roughly one
-turn a minute — which is the price of Oma being able to finish a multi-step job
+turn a minute — which is the price of Sonia being able to finish a multi-step job
 instead of stopping at the first thing she cannot see. It is a better trade than
 it looks: the session that could not search burned **twelve** tool rounds failing
 to, which is two minutes of budget for no answer. The same question now costs one
@@ -288,7 +294,7 @@ refused costs its schema every turn and a whole round trip when reached for.
 
 ## Speakers, and her hearing herself
 
-If Oma's voice comes out of speakers rather than headphones, it goes into the
+If Sonia's voice comes out of speakers rather than headphones, it goes into the
 room and back into an open microphone. The server's turn detection treats that
 as you talking: it cancels the reply she is halfway through and transcribes her
 own words as a command. From a real session log, on a machine whose mic and
@@ -356,7 +362,7 @@ you set `confirm_patterns_replace = true`.
 The control socket lives under `$XDG_RUNTIME_DIR` (mode 700, socket 600). The
 daemon refuses to start if that directory is not owner-only.
 
-## Releasing as an Omarchy plugin / opening a PR
+## Shipping as an Omarchy plugin
 
 Two pieces, on purpose:
 
@@ -381,7 +387,7 @@ Shows idle / listening / thinking / acting / waiting-for-confirm. Click
 toggles listening; click while waiting **confirms** the held action.
 
 ```bash
-omarchy plugin add https://github.com/wombatoperator/omarchy-voice.git
+omarchy plugin add https://github.com/cristianuibar/omarchy-sonia.git
 omarchy bar put voice.indicator --section right
 ```
 

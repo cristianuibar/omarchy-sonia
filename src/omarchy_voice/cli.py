@@ -206,7 +206,7 @@ def cmd_log(args, config) -> int:
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         prog="omarchy-voice",
-        description="Drive Omarchy by voice, with OpenAI Realtime as the router.",
+        description="Sonia — a voice-powered personal assistant for Omarchy.",
     )
     parser.add_argument("--version", action="version", version=f"omarchy-voice {__version__}")
     parser.add_argument("-n", "--dry-run", action="store_true",

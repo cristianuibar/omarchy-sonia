@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# omarchy:summary=Install Oma, voice control for the desktop, and enable its bar widget.
+# omarchy:summary=Install Sonia, voice-powered personal assistant for the desktop, and enable its bar widget.
 
 # Speech becomes actions rather than text: you say "put my email on workspace
 # three and go there" and the windows move. Voxtype already covers dictation on
@@ -13,7 +13,7 @@
 
 set -euo pipefail
 
-REPO="https://github.com/wombatoperator/omarchy-voice.git"
+REPO="https://github.com/cristianuibar/omarchy-sonia.git"
 SRC="${XDG_DATA_HOME:-$HOME/.local/share}/omarchy-voice-src"
 
 echo -e "\nInstalling dependencies..."
@@ -21,7 +21,7 @@ echo -e "\nInstalling dependencies..."
 # tesseract are how it reads the screen back to you.
 omarchy-pkg-add python-websockets wtype grim tesseract tesseract-data-eng
 
-echo -e "\nFetching Oma..."
+echo -e "\nFetching Sonia..."
 if [[ -d $SRC/.git ]]; then
   git -C "$SRC" pull --ff-only
 else

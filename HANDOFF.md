@@ -1,7 +1,13 @@
-# omarchy-voice — 0.3.0
+# omarchy-sonia — inherited from omarchy-voice 0.3.0
 
-**Status as of 2026-08-31.** 341 tests passing. Published at
-<https://github.com/wombatoperator/omarchy-voice> (MIT, public).
+This is the working log from the
+[omarchy-voice](https://github.com/wombatoperator/omarchy-voice) fork this
+project started as. Sonia is the new product; daemon and CLI names below still
+match that upstream layout.
+
+**Status as of 2026-08-31.** 341 tests passing. Upstream published at
+<https://github.com/wombatoperator/omarchy-voice> (MIT, public). This tree is
+<https://github.com/cristianuibar/omarchy-sonia>.
 
 ## Where things stand
 
@@ -689,8 +695,8 @@ audio, and whatever else is on screen goes with it.
 ## Verify
 
 ```bash
-git clone https://github.com/wombatoperator/omarchy-voice
-cd omarchy-voice
+git clone https://github.com/cristianuibar/omarchy-sonia
+cd omarchy-sonia
 python3 -m unittest discover -s tests      # 341 tests
 ./bin/omarchy-voice doctor
 ./bin/omarchy-voice --dry-run say "what's going on in the news today"
